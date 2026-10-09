@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f7f0">
+  <title>TouchGrass AI — Find Your Outside</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <a href="#home" class="logo">🌿 TouchGrass<span>AI</span></a>
+    <nav>
+      <a href="#discover">Discover</a>
+      <a href="#challenges">Challenges</a>
+      <a href="#journal">Journal</a>
+    </nav>
+    <span class="local-badge"><i></i> Local AI</span>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">A LITTLE MORE OUTSIDE</span>
+        <h1>Your world is<br>better <span>offline.</span></h1>
+        <p>
+          Tell us how you feel. Our AI will turn your free time
+          into a little adventure in the real world.
+        </p>
+        <a class="btn btn-primary" href="#discover">Find my adventure ↗</a>
+        <div class="hero-caption">☀️ Fresh air is calling. Pick up the adventure.</div>
+      </div>
+
+      <div class="landscape">
+        <div class="sun"></div>
+        <div class="cloud cloud-one"></div>
+        <div class="cloud cloud-two"></div>
+        <div class="mountain mountain-one"></div>
+        <div class="mountain mountain-two"></div>
+        <div class="field"></div>
+        <div class="landscape-label">
+          <span>YOUR DAILY RESET</span>
+          <h3>Leave the feed.<br>Find the feeling.</h3>
+          <p>Made for moments that matter.</p>
+        </div>
+        <div class="floating floating-one">🍃</div>
+        <div class="floating floating-two">🌼</div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <span>🌳</span>
+        <div><strong id="total-minutes">0</strong><small>Outdoor minutes</small></div>
+      </div>
+      <div class="stat">
+        <span>🏆</span>
+        <div><strong id="total-points">0</strong><small>Nature points</small></div>
+      </div>
+      <div class="stat">
+        <span>✨</span>
+        <div><strong id="total-completed">0</strong><small>Activities done</small></div>
+      </div>
+    </section>
+
+    <section class="section" id="discover">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">YOUR PERSONAL NATURE GUIDE</span>
+          <h2>What's your vibe today?</h2>
+          <p>Choose your mood and let open AI do the thinking.</p>
+        </div>
+        <span class="section-decoration">🌱</span>
+      </div>
+
+      <div class="discovery-grid">
+        <form class="card form-card" id="activity-form">
+          <label for="mood">How are you feeling?</label>
+          <select id="mood">
+            <option value="bored">😴 Bored</option>
+            <option value="stressed">😮‍💨 Stressed</option>
+            <option value="energetic">⚡ Energetic</option>
+            <option value="curious">🔎 Curious</option>
+            <option value="peaceful">🧘 Peaceful</option>
+          </select>
+
+          <label for="time">Your available time</label>
+          <select id="time">
+            <option value="15">15 minutes</option>
+            <option value="30" selected>30 minutes</option>
+            <option value="45">45 minutes</option>
+            <option value="60">60 minutes</option>
+          </select>
+
+          <label for="location">Your outdoor space</label>
+          <select id="location">
+            <option value="a local park">Local park</option>
+            <option value="my neighborhood">Neighborhood</option>
+            <option value="a garden or balcony">Garden or balcony</option>
+            <option value="a safe nature trail">Nature trail</option>
+          </select>
+
+          <label for="interest">Pick an interest</label>
+          <select id="interest">
+            <option value="nature exploration">Nature exploration</option>
+            <option value="walking">Walking</option>
+            <option value="birds and wildlife observation">Birds and wildlife</option>
+            <option value="gardening">Gardening</option>
+            <option value="mindfulness">Mindfulness</option>
+            <option value="outdoor photography">Photography</option>
+          </select>
+
+          <button class="btn btn-primary full" id="generate" type="submit">
+            ✨ Create my adventure
+          </button>
+          <p class="fine-print">Powered by an open-weight model running locally.</p>
+        </form>
+
+        <article class="card adventure-card" aria-live="polite">
+          <div id="empty-state" class="empty-state">
+            <div class="empty-illustration">🌿</div>
+            <h3>Your next story starts outside.</h3>
+            <p>Your AI-generated adventure will appear here.</p>
+            <div class="tip">💡 Start small. Even 15 minutes counts.</div>
+          </div>
+
+          <div id="adventure" hidden>
+            <span class="eyebrow">YOUR OUTDOOR MISSION</span>
+            <h3 id="adventure-title"></h3>
+            <p id="adventure-description" class="muted"></p>
+            <div class="chips">
+              <span id="adventure-time"></span>
+              <span>🌱 Real-world adventure</span>
+            </div>
+            <h4>Your action plan</h4>
+            <ol id="adventure-steps"></ol>
+            <p class="safety" id="adventure-safety"></p>
+            <button id="complete-adventure" class="btn btn-primary full">
+              I completed my adventure ✓
+            </button>
+          </div>
+        </article>
+      </div>
+      <p id="message" class="message" role="status"></p>
+    </section>
+
+    <section class="section challenges-section" id="challenges">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">SMALL STEPS, BIG FEELINGS</span>
+          <h2>Touch grass challenges.</h2>
+          <p>Try a little activity. Earn points after you complete it.</p>
+        </div>
+        <span class="section-decoration">🌻</span>
+      </div>
+
+      <div class="challenge-grid">
+        <article class="challenge card">
+          <span class="challenge-emoji">🍃</span>
+          <span class="difficulty">10 MIN · EASY</span>
+          <h3>Leaf detective</h3>
+          <p>Discover three different leaf shapes outside.</p>
+          <button class="btn btn-outline" data-id="leaf" data-points="10" data-minutes="10">Earn 10 points</button>
+        </article>
+
+        <article class="challenge card">
+          <span class="challenge-emoji">🚶</span>
+          <span class="difficulty">15 MIN · EASY</span>
+          <h3>Mindful wander</h3>
+          <p>Walk somewhere safe without checking your phone.</p>
+          <button class="btn btn-outline" data-id="walk" data-points="15" data-minutes="15">Earn 15 points</button>
+        </article>
+
+        <article class="challenge card">
+          <span class="challenge-emoji">🐦</span>
+          <span class="difficulty">10 MIN · CURIOUS</span>
+          <h3>Sound explorer</h3>
+          <p>Pause and notice three sounds from nature.</p>
+          <button class="btn btn-outline" data-id="sound" data-points="10" data-minutes="10">Earn 10 points</button>
+        </article>
+
+        <article class="challenge card">
+          <span class="challenge-emoji">🪴</span>
+          <span class="difficulty">20 MIN · GROW</span>
+          <h3>Plant a little joy</h3>
+          <p>Water a plant or spend time caring for your garden.</p>
+          <button class="btn btn-outline" data-id="plant" data-points="20" data-minutes="20">Earn 20 points</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="journal">
+      <div class="section-title">
+        <div>
+          <span class="eyebrow">SAVE THE MOMENT</span>
+          <h2>Your nature journal.</h2>
+          <p>Capture the little things worth remembering.</p>
+        </div>
+        <span class="section-decoration">📔</span>
+      </div>
+
+      <form class="card journal-form" id="journal-form">
+        <label for="entry-title">Give your memory a title</label>
+        <input id="entry-title" maxlength="100" required
+          placeholder="e.g. My first morning walk">
+
+        <label for="entry-notes">What did you discover?</label>
+        <textarea id="entry-notes" rows="4" maxlength="1000"
+          placeholder="Write about the things you saw, heard, and felt..."></textarea>
+
+        <button class="btn btn-primary" type="submit">Save memory ✨</button>
+      </form>
+      <div id="journal-entries" class="journal-grid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#home" class="logo footer-logo">🌿 TouchGrass<span>AI</span></a>
+    <p>Open AI. Real adventures. A healthier relationship with screens.</p>
+    <small>Your next adventure is waiting outside.</small>
+  </footer>
+</body>
+</html>
